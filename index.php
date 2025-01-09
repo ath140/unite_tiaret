@@ -17,6 +17,8 @@ if (isset($_POST['btn_s'])) {
         if ($row['role'] == 'user') {
           header('refresh:1;phpFiles/gds/gsd.php');
         }
+      }if($row['service'] == 'BOSS'){
+        header('refresh:1;phpFiles/boss/boss.php'); 
       }
     }
   }
