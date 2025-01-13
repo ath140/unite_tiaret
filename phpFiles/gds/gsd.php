@@ -11,8 +11,9 @@
         <h1>GDS</h1>
     </div>
     <ul>
-        <li><a href="#">Entrées</a></li>
+        <li><a href="/phpFiles/gds/entrees.php">Entrées</a></li>
         <li><a href="#">Sorties</a></li>
+        <li><a href="#">Registration</a></li>
         <li><a href="/index.php">Retour</a></li>
     </ul>
 </body>
