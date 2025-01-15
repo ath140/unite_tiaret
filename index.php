@@ -13,12 +13,14 @@ if (isset($_POST['btn_s'])) {
 
   if (is_array($row)) {
     if ($row['Email_user'] == $email && $row['password_user'] == $password) {
-      if ($row['service'] == 'GDS') {
-        if ($row['role'] == 'user') {
+      $VALEUR = $row['service'];
+      switch ($VALEUR) {
+        case 'BOSS':
+          header('refresh:1;phpFiles/boss/boss.php');
+          break;
+        case 'GDS':
           header('refresh:1;phpFiles/gds/gsd.php');
-        }
-      }if($row['service'] == 'BOSS'){
-        header('refresh:1;phpFiles/boss/boss.php'); 
+          break;
       }
     }
   }

@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>G D G</title>
+  <title>DIRECTEUR</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/adminlte-v3/plugins/fontawesome-free/css/all.min.css">
@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block" style="font-size:small">SERVICE GESTION DES STOCKS</a>
+          <a href="#" class="d-block" style="font-size:small">DIRECTEUR</a>
         </div>
       </div>
 
@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                RECAPE
+                D F C
               </p>
             </a>
           </li>
@@ -94,7 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Entrées
+                COMPTABILTE
               </p>
             </a>
           </li>
@@ -102,7 +102,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Sorties
+                FINANCE
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                JURISTE
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                PARC
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                TECHNIQUE
               </p>
             </a>
           </li>
