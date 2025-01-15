@@ -1,5 +1,5 @@
   <?php
-  include_once("entete.php"); 
+  include_once("../initial/entete.php"); 
   ?>
    <!-- Main content -->
     <div class="content">
@@ -67,5 +67,5 @@
     <!-- /.content -->
   </div>
   <?php
-  include_once("pied.php"); 
+  include_once("../initial/pied.php"); 
   ?>

@@ -1,5 +1,5 @@
 <?php
-include_once("../unite_tiaret/phpFiles/connection.php");
+include_once("phpFiles/connection.php");
 session_start();
 
 if (isset($_POST['btn_s'])) {
