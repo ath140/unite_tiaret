@@ -1,25 +1,84 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<?php
+include_once("../connection.php");
+session_start();
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-  <div class="contianer">
-    <div class="row">
-        <div class="col-sm-4 col-md-6"><h2>hallo</h2></div>
-        <div class="col-sm-4"><h2>hallo</h2></div>
-    </div>
-   </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+include_once("entete.php");
+?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark"><samp style="color:tomato">E</samp>ntrées</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="card">
+        <div class="card-header">
+          <h5 class="m-0">DONNEES</h5>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <form role="form">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Date des Entrées</label>
+                  <input type="date" class="form-control" id="date" placeholder="Date">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Montant des Entrées</label>
+                  <input type="bouble" class="form-control" value="0" id="montant" placeholder="Montant">
+                </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Sauvegarder</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-8">
+            <table class="table table-striped">
+              <tr>
+                <thead>
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>Montant</th>
+              </tr>
+              </thead>
+                <tbody>
+         <?php 
+         $select= $connecte->prepare("select * from  entrees");
+         $select->execute();
+         while($row = $select->fetch(PDO::FETCH_OBJ)){
+          echo'
+          <tr>
+          <td>'.$row->id_entrees.'</td>
+          <td>'.$row->date_entree.'</td>
+          <td>'.$row->Montant.'</td>
+          </tr>';}
+         ?>
+                </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>
+<?php
+include_once("pied.php");
+?>
