@@ -2,6 +2,27 @@
 include_once("../connection.php");
 session_start();
 
+if(isset($_POST['sauve']))
+{
+  $date = $_POST['dat'];
+  $montant = $_POST['mont'];
+  $beneficaire=$_POST['select'];
+  $mode=$_POST['mode'];
+
+$select =$connecte->prepare("insert into entrees(date_entree,Montant,centre,Paiement)values(:date,:montant,:bene,:mode)");
+$select->bindParam(':date',$date);
+$select->bindParam(':montant',$montant);
+$select->bindParam(':bene',$beneficaire);
+$select->bindParam(':mode',$mode);
+
+if($select->execute()){
+   echo('insert');
+
+}else{
+  echo('error');
+}
+}
+
 include_once("entete.php");
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -21,7 +42,7 @@ include_once("entete.php");
   <div class="content">
     <div class="container-fluid">
 
-      <div class="card">
+      <div class="card" style="background-color:lightgray">
         <div class="card-header">
           <h5 class="m-0">DONNEES</h5>
         </div>
@@ -32,18 +53,18 @@ include_once("entete.php");
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Date des Entrées</label>
-                  <input type="date" class="form-control" id="date" placeholder="Date">
+                  <input type="date" class="form-control" id="date" placeholder="Date" name="dat">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Montant des Entrées</label>
-                  <input type="bouble" class="form-control" value="0" id="montant" placeholder="Montant">
+                  <input type="bouble" class="form-control" value="0" id="montant" placeholder="Montant" name="mont">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">centre d'interet</label>
                   <?php
                   $s = $connecte->prepare("select * from c_interet");
                   $s->execute(); ?>
-                  <select>
+                  <select name="select">
                     <option value="" disabled selected>selectionner un centre</option>
                     <?php
                     while ($row = $s->fetch(PDO::FETCH_OBJ)) {
@@ -59,7 +80,7 @@ include_once("entete.php");
                   <?php
                   $s = $connecte->prepare("select * from paiement");
                   $s->execute(); ?>
-                  <select>
+                  <select name="mode">
                     <option value="" disabled selected>Selectionner un Mode</option>
                     <?php
                     while ($row = $s->fetch(PDO::FETCH_OBJ)) {
@@ -72,14 +93,14 @@ include_once("entete.php");
                 </div>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                <button type="submit" class="btn btn-primary" name="sauve">Sauvegarder</button>
               </div>
             </form>
           </div>
           <div class="col-md-8">
             <table class="table table-striped">
               <tr>
-                <thead>
+                <thead style="background-color:gray">
                   <th>ID</th>
                   <th>Date</th>
                   <th>Montant</th>
@@ -97,7 +118,7 @@ include_once("entete.php");
           <td>' . $row->id_entrees . '</td>
           <td>' . $row->date_entree . '</td>
           <td>' . $row->Montant . '</td>
-          <td>' . $row->centre . '</td>
+          <td style="text-transform: uppercase">' . $row->centre . '</td>
           <td>' . $row->Paiement . '</td>
           </tr>';
                 }
@@ -108,7 +129,7 @@ include_once("entete.php");
         </div>
 
       </div>
-      <div class="card">
+      <div class="card" style="background-color:darkgrey">
         <div class="card-header">
           <h5 class="m-0">Analyse</h5>
         </div>
@@ -151,12 +172,12 @@ include_once("entete.php");
             <div class="col-md-3"
               <div class="total2">
               <h5 style="color:white;background-color:black;text-align:center">TOTAL DES ACHATS CHEQUES</h5>
-              <h5 style="text-align:center"><?php echo ($caisse . 'DA') ?></h5>
+              <h5 style="text-align:center"><?php echo ($cheque . 'DA') ?></h5>
             </div>
             <div class="col-md-3"
               <div class="total2">
               <h5 style="color:white;background-color:black;text-align:center">TOTAL DES ACHATS DETTES</h5>
-              <h5 style="text-align:center"><?php echo ($caisse . 'DA') ?></h5>
+              <h5 style="text-align:center"><?php echo ($dette . 'DA') ?></h5>
             </div>
           </div>
         </div>
